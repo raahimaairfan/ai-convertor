@@ -1,18 +1,17 @@
 import os
-import sys
+import spacy
 import re
 
 import streamlit as st
 
-# Print the current Python version
-st.write(f"Running on Python version: {sys.version}")
+# Install dependencies at runtime (to ensure correct versions)
+os.system("pip install --no-cache-dir spacy numpy cython")
 
-# Force install dependencies at runtime
-os.system("pip install --no-cache-dir spacy thinc numpy cython")
+# Download spaCy model if missing
 os.system("python -m spacy download en_core_web_sm")
 
-import spacy
-nlp = spacy.load("en_core_web_sm")
+# Load spaCy NLP model
+nlp = spacy.load("en_core_web_sm", disable=["parser", "ner"])  # Disable ML features
 
 def extract_conversion_details(text):
     """Extracts number, source unit, and target unit from user input."""
