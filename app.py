@@ -1,17 +1,16 @@
 import streamlit as st
 import spacy
 import re
-
 import os
 
-# Install missing dependencies
+# Install missing dependencies if not installed
 os.system("pip install --no-cache-dir spacy==3.5.3 thinc==8.1.10 numpy==1.23.5 cython==0.29.36")
+
+# Download the spaCy language model if missing
+os.system("python -m spacy download en_core_web_sm")
 
 # Load spaCy NLP model
 nlp = spacy.load("en_core_web_sm")
-
-# Set page configuration
-st.set_page_config(page_title="AI-Powered Unit Converter", layout="wide")
 
 def extract_conversion_details(text):
     """Extracts number, source unit, and target unit from user input."""
