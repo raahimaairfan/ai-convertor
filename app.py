@@ -2,6 +2,11 @@ import streamlit as st
 import spacy
 import re
 
+import os
+
+# Install missing dependencies
+os.system("pip install --no-cache-dir spacy==3.5.3 thinc==8.1.10 numpy==1.23.5 cython==0.29.36")
+
 # Load spaCy NLP model
 nlp = spacy.load("en_core_web_sm")
 
