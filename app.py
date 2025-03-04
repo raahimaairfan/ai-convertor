@@ -9,7 +9,9 @@ import streamlit as st
 import spacy
 
 # Download the spaCy model at runtime
+os.system("pip install --no-cache-dir thinc==8.1.10")
 os.system("python -m spacy download en_core_web_sm")
+
 nlp = spacy.load("en_core_web_sm")
 
 def extract_conversion_details(text):
