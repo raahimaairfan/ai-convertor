@@ -1,17 +1,17 @@
-import re
 import os
-
-# Force-install correct dependencies at runtime
-os.system("pip install --upgrade pip")
-os.system("pip install --no-cache-dir spacy thinc numpy cython")
+import sys
+import re
 
 import streamlit as st
-import spacy
 
-# Download the spaCy model at runtime
-os.system("pip install --no-cache-dir thinc==8.1.10")
+# Print the current Python version
+st.write(f"Running on Python version: {sys.version}")
+
+# Force install dependencies at runtime
+os.system("pip install --no-cache-dir spacy thinc numpy cython")
 os.system("python -m spacy download en_core_web_sm")
 
+import spacy
 nlp = spacy.load("en_core_web_sm")
 
 def extract_conversion_details(text):
